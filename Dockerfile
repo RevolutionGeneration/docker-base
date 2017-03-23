@@ -20,5 +20,5 @@ ENV LANG en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
 ENV LANGUAGE en_GB.UTF-8
 
-CMD service cron start && tail -F /var/log/syslog
+CMD service cron start && service rsyslog start && tail -F /var/log/syslog
 
