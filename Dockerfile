@@ -2,6 +2,7 @@ FROM debian:jessie
 
 # runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    supervisor \
     git \
     locales \
     cron \
@@ -20,5 +21,6 @@ ENV LANG en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
 ENV LANGUAGE en_GB.UTF-8
 
-CMD service cron start && service rsyslog start && tail -F /var/log/syslog
+COPY supervisord/conf.d /etc/supervisor/conf.d
 
+CMD supervisord -n -c /etc/supervisor/supervisord.conf
