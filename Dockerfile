@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # set lang to en_GB
 RUN sed -i 's|# en_GB.UT|en_GB.UT|' /etc/locale.gen && \
     locale-gen && \
-    DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
+    DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales && \
+    ln -s /usr/share/zoneinfo/Europe/London /etc/localtime
 
 ENV LANG en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
