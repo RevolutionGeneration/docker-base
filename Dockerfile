@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stable
 
 # runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
